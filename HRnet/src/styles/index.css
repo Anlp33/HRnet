@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 34px;
+}
+h2 {
+  margin-bottom: 10px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-employee {
+  display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+.form {
+      display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+input, .start-date, .date-of-birth {
+    margin-bottom: 20px;
+}
