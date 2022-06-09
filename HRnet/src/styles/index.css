@@ -28,17 +28,30 @@ h2 {
 
 .create-employee {
   display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    margin-bottom: 50px;
+  flex-direction: column;
+  margin-top: 0px;
+  margin-bottom: 50px;
 }
 .form {
-      display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
-input, .start-date, .date-of-birth {
-    margin-bottom: 20px;
+input,
+.start-date,
+.date-of-birth {
+  margin-bottom: 20px;
+}
+
+.modal {
+  display: flex;
+  border-radius: 5px;
+  border: solid grey;
+  padding: 10px 5px;
+}
+.modal button {
+  width: 25px;
+  height: 25px;
 }
