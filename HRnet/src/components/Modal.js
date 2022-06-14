@@ -1,5 +1,6 @@
 import React from "react";
-import xmark from "../assets/xmark-solid.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Modal(props) {
   return (
@@ -10,7 +11,7 @@ export default function Modal(props) {
         className="modal-close-button"
         onClick={props.closeModal}
       >
-        <img src={xmark} alt="closeButton" />
+        <FontAwesomeIcon icon={faCircleXmark} />
       </button>
     </div>
   );

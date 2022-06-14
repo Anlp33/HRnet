@@ -2,8 +2,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import { states } from "../data/states";
 import DatePicker from "react-date-picker";
-import { Dropdown } from "react-dropdown-now";
-import "react-dropdown-now/style.css";
+import Dropdown from "./Dropdown";
 import Modal from "./Modal";
 import { DataContext } from "../utils/context/dataContext";
 
@@ -18,13 +17,14 @@ export default function Form() {
   const [zipCode, setZipCode] = useState();
   const [department, setDepartment] = useState("");
   const [openModal, setOpenModal] = useState(false);
+  const [formDisplay, setFormDisplay] = useState(true);
 
   const { addData } = useContext(DataContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setOpenModal(!openModal)
-    console.log(openModal)
+    setOpenModal(!openModal);
+    setFormDisplay(!formDisplay);
 
     const employee = {
       firstName,
@@ -38,11 +38,24 @@ export default function Form() {
       department,
     };
     addData(employee);
+    console.log(employee);
+  };
+
+  const handleDepartmentChange = (event) => {
+    setDepartment(event.target.value);
+  };
+
+  const handleStateChange = (event) => {
+    setState(event.target.value);
   };
 
   return (
+   
     <div className="form">
-      <form className="create-employee" onSubmit={handleSubmit}>
+      <h2>Create Employee</h2> 
+      
+
+      {formDisplay ? <form className="create-employee" onSubmit={handleSubmit}>
         <label htmlFor="first-name">First Name</label>
         <input
           type="text"
@@ -84,15 +97,12 @@ export default function Form() {
             onChange={(e) => setCity(e.target.value)}
           />
 
-          <label htmlFor="state">State</label>
           <Dropdown
-            placeholder="Select an option"
+            label="State"
             className="state"
             options={states.map((state) => state.name)}
-            value="Alabama"
-            onSelect={(value) => setState(value)} // always fires once a selection happens even if there is no change
+            onChange={handleStateChange}
           />
-
           <label htmlFor="zip-code">Zip Code</label>
           <input
             id="zip-code"
@@ -100,10 +110,8 @@ export default function Form() {
             onChange={(e) => setZipCode(e.target.value)}
           />
         </fieldset>
-        <label htmlFor="department">Department</label>
         <Dropdown
-          placeholder="Select an option"
-          className="department"
+          label="Department"
           options={[
             "Sales",
             "Marketing",
@@ -111,19 +119,23 @@ export default function Form() {
             "Human Resources",
             "Legal",
           ]}
-          value="Select an option"
-          onSelect={(value) => setDepartment(value)} // always fires once a selection happens even if there is no change
+          onChange={handleDepartmentChange}
         />
+        <button className="button save">Save</button>
+      </form> : null}
 
-        <button>Save</button>
-      </form>
+
 
       {openModal && (
         <Modal
           message={"Employee successfully created"}
-          closeModal={() => setOpenModal(false)}
+          closeModal={() => {
+            setOpenModal(false);
+            setFormDisplay(!formDisplay)
+          }}
         />
-      )}
+    )}
+      
     </div>
   );
 }
