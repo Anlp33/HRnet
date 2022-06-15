@@ -3,7 +3,7 @@ import { useState } from "react";
 import { states } from "../data/states";
 import DatePicker from "react-date-picker";
 import Dropdown from "./Dropdown";
-import Modal from "./Modal";
+import Modal from "modal-simple-component/dist/Modal";
 import { DataContext } from "../utils/context/dataContext";
 
 export default function Form() {
