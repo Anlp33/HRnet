@@ -2,12 +2,54 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { DataContext } from "../utils/context/dataContext";
 import { useContext } from "react";
-import { useTable } from "react-table";
+import Table from "../components/Table";
+import styled from "styled-components";
 
 export default function Employees() {
   const { employeeData } = useContext(DataContext);
+
   console.log(employeeData);
 
+
+
+  const Styles = styled.div`
+    padding: 1rem;
+    .table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    .table-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+    }
+    table {
+      background: floralwhite;
+      border-spacing: 0;
+      border-radius: 3px;
+      border: 1px solid black;
+      tr {
+        :last-child {
+          td {
+            border-bottom: 0;
+          }
+        }
+      }
+      th,
+      td {
+        margin: 0;
+        padding: 0.5rem;
+        border-bottom: 1px solid black;
+        border-right: 1px solid black;
+        :last-child {
+          border-right: 0;
+        }
+      }
+    }
+  `;
   const columns = React.useMemo(
     () => [
       {
@@ -50,34 +92,15 @@ export default function Employees() {
     []
   );
 
-  const data = React.useMemo(
-    () => [
-      {
-        firstName: "firstname",
-        lastName: "lastname",
-      },
-    ],
-    []
-  );
-  function Table({ columns, data }) {
-    // Use the useTable Hook to send the columns and data to build the table
-    const {
-      getTableProps, // table props from react-table
-      getTableBodyProps, // table body props from react-table
-      headerGroups, // headerGroups, if your table has groupings
-      rows, // rows for the table based on the data passed
-      prepareRow, // Prepare the row (this function needs to be called for each row before getting the row props)
-    } = useTable({
-      columns,
-      data,
-    });
-  }
+  const data = React.useMemo(() => [employeeData], [employeeData]);
 
   return (
-    <div id="employee-div" className="container">
+    <div id="employeeList" className="employeeList">
       <h2>Current Employees</h2>
-      {/* <Styles>{ employeeData.length? <Table columns={columns} data={employeeData} /> : null}</Styles> */}
-      <Table columns={columns} data={data} />
+      {employeeData.length ?
+        <Styles>
+          <Table columns={columns} data={data} />
+        </Styles> : null}
       <Link to="/">Home</Link>
     </div>
   );
