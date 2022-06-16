@@ -1,6 +1,5 @@
 import React from "react";
 
-
 export default function Dropdown({ label, options, onChange }) {
   return (
     <div className="dropdown">
@@ -8,7 +7,9 @@ export default function Dropdown({ label, options, onChange }) {
         {label}
         <select onChange={onChange}>
           {options.map((option, index) => (
-            <option value={option} key={index}>{option}</option>
+            <option value={option} key={index}>
+              {option}
+            </option>
           ))}
         </select>
       </label>

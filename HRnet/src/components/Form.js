@@ -11,11 +11,11 @@ export default function Form() {
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-  const [state, setState] = useState("");
+  const [state, setState] = useState("Alabama");
   const [street, setCity] = useState("");
   const [city, setStreet] = useState("");
   const [zipCode, setZipCode] = useState();
-  const [department, setDepartment] = useState("");
+  const [department, setDepartment] = useState("Sales");
   const [openModal, setOpenModal] = useState(false);
   const [formDisplay, setFormDisplay] = useState(true);
 

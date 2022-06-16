@@ -10,8 +10,6 @@ export default function Employees() {
 
   console.log(employeeData);
 
-
-
   const Styles = styled.div`
     padding: 1rem;
     .table-header {
@@ -25,6 +23,7 @@ export default function Employees() {
       justify-content: space-between;
       align-items: center;
       margin-top: 10px;
+      
     }
     table {
       background: floralwhite;
