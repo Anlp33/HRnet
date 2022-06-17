@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { states } from "../data/states";
-import Modal from "modal-simple-component/dist/Modal";
+import Modal from "modal-component-anlp33/dist/Modal";
 import { DataContext } from "../utils/context/dataContext";
 
 export default function Form() {
