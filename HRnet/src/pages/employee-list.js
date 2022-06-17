@@ -96,10 +96,8 @@ export default function Employees() {
   return (
     <div id="employeeList" className="employeeList">
       <h2>Current Employees</h2>
-      {employeeData.length ?
-        <Styles>
-          <Table columns={columns} data={data} />
-        </Styles> : null}
+
+      <Styles>{data && <Table columns={columns} data={data} />}</Styles>
       <Link to="/">Home</Link>
     </div>
   );

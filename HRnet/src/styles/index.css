@@ -3,6 +3,8 @@ body {
   font-family: "Source Serif Pro", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 1440px;
+  min-width: 320px;
 }
 
 code {
@@ -27,8 +29,7 @@ a {
 }
 .header {
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
 }
 .main {
   display: flex;
@@ -88,10 +89,9 @@ legend {
 }
 
 select {
-  margin-left: 10px;
   padding: 6px;
   font-family: "Source Serif Pro", serif;
-  margin-bottom: 10px;
+  margin: 10px;
 }
 input,
 .start-date,

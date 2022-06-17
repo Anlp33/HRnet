@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import { states } from "../data/states";
-import DatePicker from "react-date-picker";
-import Dropdown from "./Dropdown";
 import Modal from "modal-simple-component/dist/Modal";
 import { DataContext } from "../utils/context/dataContext";
 
@@ -41,101 +39,111 @@ export default function Form() {
     console.log(employee);
   };
 
-  const handleDepartmentChange = (event) => {
-    setDepartment(event.target.value);
-  };
-
-  const handleStateChange = (event) => {
-    setState(event.target.value);
-  };
-
   return (
-   
     <div className="form">
-      <h2>Create Employee</h2> 
-      
+      <h2>Create Employee</h2>
 
-      {formDisplay ? <form className="create-employee" onSubmit={handleSubmit}>
-        <label htmlFor="first-name">First Name</label>
-        <input
-          type="text"
-          id="first-name"
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label htmlFor="last-name">Last Name</label>
-        <input
-          type="text"
-          id="last-name"
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <label htmlFor="date-of-birth">Date of Birth</label>
-        <DatePicker
-          className="date-of-birth"
-          onChange={(date) => setBirthDate(date)}
-          value={birthDate}
-        />
-        <label htmlFor="start-date">Start Date</label>
-        <DatePicker
-          className="start-date"
-          onChange={(date) => setStartDate(date)}
-          value={startDate}
-        />
-        <fieldset className="address">
-          <legend>Address</legend>
-
-          <label htmlFor="street">Street</label>
+      {formDisplay ? (
+        <form className="create-employee" onSubmit={handleSubmit}>
+          <label htmlFor="first-name">First Name</label>
           <input
-            id="street"
             type="text"
-            onChange={(e) => setStreet(e.target.value)}
+            id="first-name"
+            required="required"
+            onChange={(e) => setFirstName(e.target.value)}
           />
-
-          <label htmlFor="city">City</label>
+          <label htmlFor="last-name">Last Name</label>
           <input
-            id="city"
             type="text"
-            onChange={(e) => setCity(e.target.value)}
+            required="required"
+            id="last-name"
+            onChange={(e) => setLastName(e.target.value)}
           />
-
-          <Dropdown
-            label="State"
-            className="state"
-            options={states.map((state) => state.name)}
-            onChange={handleStateChange}
-          />
-          <label htmlFor="zip-code">Zip Code</label>
+          <label htmlFor="date-of-birth">Date of Birth</label>
           <input
-            id="zip-code"
-            type="number"
-            onChange={(e) => setZipCode(e.target.value)}
+            className="form-input"
+            type="date"
+            required="required"
+            id="date-of-birth"
+            onChange={(e) => setBirthDate(e.target.value)}
           />
-        </fieldset>
-        <Dropdown
-          label="Department"
-          options={[
-            "Sales",
-            "Marketing",
-            "Engineering",
-            "Human Resources",
-            "Legal",
-          ]}
-          onChange={handleDepartmentChange}
-        />
-        <button className="button save">Save</button>
-      </form> : null}
 
+          <label htmlFor="start-date">Start Date</label>
+          <input
+            className="form-input"
+            type="date"
+            id="start-date"
+            required="required"
+            onChange={(e) => setStartDate(e.target.value)}
+          />
 
+          <fieldset className="address">
+            <legend>Address</legend>
+
+            <label htmlFor="street">Street</label>
+            <input
+              id="street"
+              type="text"
+              required="required"
+              onChange={(e) => setStreet(e.target.value)}
+            />
+
+            <label htmlFor="city">City</label>
+            <input
+              id="city"
+              type="text"
+              required="required"
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <br />
+            <label htmlFor="state">State</label>
+            <select
+              name="state"
+              onChange={(e) => setState(e.target.value)}
+              id="state"
+            >
+              {states.map((state) => (
+                <option key={state.abbreviation} value={state.abbreviation} defaultValue="N/A">  
+                  {state.name}
+                </option>
+              ))}
+            </select>
+
+            <label htmlFor="zip-code">Zip Code</label>
+            <input
+              id="zip-code"
+              type="number"
+              required="required"
+              onChange={(e) => setZipCode(e.target.value)}
+            />
+          </fieldset>
+
+          <label htmlFor="department">Department</label>
+          <select
+            name="department"
+            onChange={(e) => setDepartment(e.target.value)}
+            id="department"
+          >
+            <option value="Sales">Sales</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Human Resources">Human Resources</option>
+            <option value="Legal">Legal</option>
+          </select>
+
+          <button className="button save">Save</button>
+        </form>
+      ) : null}
 
       {openModal && (
         <Modal
           message={"Employee successfully created"}
           closeModal={() => {
             setOpenModal(false);
-            setFormDisplay(!formDisplay)
+            setFormDisplay(!formDisplay);
           }}
         />
-    )}
-      
+      )}
     </div>
   );
 }

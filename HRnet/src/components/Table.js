@@ -1,4 +1,6 @@
 import React from "react";
+import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   useTable,
   useSortBy,
@@ -7,6 +9,7 @@ import {
   usePagination,
 } from "react-table";
 
+//search bar
 function GlobalFilter({
   preGlobalFilteredRows,
   globalFilter,
@@ -39,6 +42,8 @@ function GlobalFilter({
 }
 
 export default function Table({ columns, data }) {
+  data = data[0];
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -86,6 +91,7 @@ export default function Table({ columns, data }) {
           </select>
           <span> entries</span>
         </div>
+
         <GlobalFilter
           preGlobalFilteredRows={preGlobalFilteredRows}
           setGlobalFilter={setGlobalFilter}
@@ -100,11 +106,15 @@ export default function Table({ columns, data }) {
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
-                    {column.isSorted
-                      ? column.isSortedDesc
-                        ? " 🔽"
-                        : " 🔼"
-                      : ""}
+                    {column.isSorted ? (
+                      column.isSortedDesc ? (
+                        <FontAwesomeIcon icon={faArrowDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faArrowUp}  />
+                      )
+                    ) : (
+                      ""
+                    )}
                   </span>
                 </th>
               ))}
@@ -126,6 +136,7 @@ export default function Table({ columns, data }) {
           })}
         </tbody>
       </table>
+
       <div className="table-footer">
         <div>
           Showing {page.length === 0 ? "0" : Number(page[0].id) + 1} to{" "}
@@ -161,4 +172,3 @@ export default function Table({ columns, data }) {
     </>
   );
 }
-
