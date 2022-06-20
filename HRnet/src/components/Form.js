@@ -11,8 +11,8 @@ import { DataContext } from "../utils/context/dataContext";
 export default function Form() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birthDate, setBirthDate] = useState(new Date());
-  const [startDate, setStartDate] = useState(new Date());
+  const [birthDate, setBirthDate] = useState();
+  const [startDate, setStartDate] = useState();
   const [state, setState] = useState("Alabama");
   const [street, setCity] = useState("");
   const [city, setStreet] = useState("");
