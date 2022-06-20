@@ -4,6 +4,10 @@ import { states } from "../data/states";
 import Modal from "modal-component-anlp33/dist/Modal";
 import { DataContext } from "../utils/context/dataContext";
 
+/**
+ * This component create a Form
+ * @returns {JSX} react component
+ */
 export default function Form() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

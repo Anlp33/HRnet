@@ -26,7 +26,7 @@ export default function Employees() {
       
     }
     table {
-      background: white;
+      background: floralwhite;
       border-spacing: 0;
       border-radius: 3px;
       border: 1px solid black;

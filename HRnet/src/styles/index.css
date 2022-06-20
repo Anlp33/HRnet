@@ -6,11 +6,6 @@ body {
   min-width: 320px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 h1 {
   display: flex;
   justify-content: center;
@@ -35,22 +30,20 @@ a {
   position: relative;
   flex-direction: column;
   align-items: center;
-  /* background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%; */
-  /* background-image: url("../assets/employees.jpg"); */
-  background-color:navy
+  background-size: 100%;
+  background-image: url("../assets/employees.avif");
 }
 .employeeList {
   display: flex;
   position: relative;
   flex-direction: column;
   align-items: center;
-  background-color:navy
-  /* background-image: url("../assets/employees.jpg"); */
-  /* background-repeat: no-repeat;
+  background-image: url("../assets/employees.avif");
+  background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100%; */
+  background-size: 100%;
 }
 .create-employee {
   display: flex;
@@ -65,7 +58,7 @@ a {
   flex-direction: column;
   align-items: center;
   margin: 100px;
-  background-color: white;
+  background-color: floralwhite;
   opacity: 90%;
   border-radius: 10px;
   padding: 20px;
@@ -77,12 +70,7 @@ input {
 .address {
   margin-bottom: 15px;
 }
-.react-date-picker__wrapper {
-  margin: 10px;
-}
-.react-date-picker__inputGroup {
-  height: 70%;
-}
+
 label,
 legend {
   font-size: 18px;
