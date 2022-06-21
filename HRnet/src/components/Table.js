@@ -49,12 +49,11 @@ function GlobalFilter({
 /**
  * This component create a Tab
  * @param {object} columns
- * @param {object} data 
+ * @param {object} data
  * @returns {JSX} react component
  */
 export default function Table({ columns, data }) {
-  
-    data = data[0];
+  data = data[0];
 
   const {
     getTableProps,
@@ -118,15 +117,7 @@ export default function Table({ columns, data }) {
                 <th {...column.getHeaderProps(column.getSortByToggleProps())}>
                   {column.render("Header")}
                   <span>
-                    {column.isSorted ? (
-                      column.isSortedDesc ? (
-                        <FontAwesomeIcon icon={faArrowDown} />
-                      ) : (
-                        <FontAwesomeIcon icon={faArrowUp}  />
-                      )
-                    ) : (
-                      ""
-                    )}
+                    {column.isSorted ? (column.isSortedDesc ? "⇧" : "⇩") : ""}
                   </span>
                 </th>
               ))}

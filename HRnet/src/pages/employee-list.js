@@ -61,15 +61,15 @@ export default function Employees() {
       },
       {
         Header: "Start Date",
-        accessor: "startDate",
+        accessor: "startDateStr",
       },
       {
         Header: "Department",
-        accessor: "department",
+        accessor: "departmentStr",
       },
       {
         Header: "Date of Birth",
-        accessor: "birthDate",
+        accessor: "birthdateStr",
       },
       {
         Header: "Street",

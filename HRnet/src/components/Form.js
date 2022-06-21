@@ -19,12 +19,16 @@ export default function Form() {
   const [state, setState] = useState("Alabama");
   const [street, setCity] = useState("");
   const [city, setStreet] = useState("");
-  const [zipCode, setZipCode] = useState();
+  const [zipCode, setZipCode] = useState("");
   const [department, setDepartment] = useState("Sales");
   const [openModal, setOpenModal] = useState(false);
   const [formDisplay, setFormDisplay] = useState(true);
 
   const { addData } = useContext(DataContext);
+
+  const birthdateStr = birthDate.toDateString();
+  const startDateStr = startDate.toDateString();
+  const departmentStr = department.toString();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,13 +38,13 @@ export default function Form() {
     const employee = {
       firstName,
       lastName,
-      birthDate,
-      startDate,
+      birthdateStr,
+      startDateStr,
       state,
       street,
       city,
       zipCode,
-      department,
+      departmentStr,
     };
     addData(employee);
     console.log(employee);
@@ -115,7 +119,7 @@ export default function Form() {
               id="zip-code"
               type="number"
               required="required"
-              onChange={(value) => setZipCode(value)}
+              onChange={(e) => setZipCode(e.target.value)}
             />
           </fieldset>
 
@@ -130,8 +134,8 @@ export default function Form() {
               "Human Resources",
               "Legal",
             ]}
-            value="Select an option"
-            onSelect={(value) => setDepartment(value)} 
+            value="Sales"
+            onSelect={(value) => setDepartment(value)}
           />
 
           <button className="button save">Save</button>
@@ -149,5 +153,4 @@ export default function Form() {
       )}
     </div>
   );
-  
 }

@@ -63,9 +63,12 @@ a {
   border-radius: 10px;
   padding: 20px;
 }
-input {
-  padding: 6px;
-  margin: 10px;
+#first-name,
+#last-name,
+#city,
+#street,
+#zip-code {
+  padding: 10px;
 }
 .address {
   margin-bottom: 15px;
@@ -107,4 +110,22 @@ input,
 
 .save {
   width: 100px;
+}
+
+.rdn-control {
+  margin-bottom: 20px;
+}
+.react-date-picker__wrapper {
+  border-radius: 2px;
+  background-color: white;
+}
+.react-date-picker__inputGroup {
+  padding: 0 10px;
+}
+#street {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+#city {
+  margin-left: 10px;
 }
