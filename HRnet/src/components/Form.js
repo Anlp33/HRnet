@@ -145,7 +145,7 @@ export default function Form() {
       {openModal && (
         <Modal
           message={"Employee successfully created"}
-          closeModal={() => {
+          onClose={() => {
             setOpenModal(false);
             setFormDisplay(!formDisplay);
           }}
