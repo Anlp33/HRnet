@@ -1,8 +1,11 @@
 import React, { useContext } from "react";
+import { DataContext } from "../utils/context/dataContext";
 import { useState } from "react";
 import { states } from "../data/states";
+import DatePicker from "react-date-picker";
+import { Dropdown } from "react-dropdown-now";
+import "react-dropdown-now/style.css";
 import Modal from "modal-component-anlp33/dist/Modal";
-import { DataContext } from "../utils/context/dataContext";
 
 /**
  * This component create a Form
@@ -11,8 +14,8 @@ import { DataContext } from "../utils/context/dataContext";
 export default function Form() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birthDate, setBirthDate] = useState();
-  const [startDate, setStartDate] = useState();
+  const [birthDate, setBirthDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(new Date());
   const [state, setState] = useState("Alabama");
   const [street, setCity] = useState("");
   const [city, setStreet] = useState("");
@@ -63,22 +66,20 @@ export default function Form() {
             id="last-name"
             onChange={(e) => setLastName(e.target.value)}
           />
+
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input
-            className="form-input"
-            type="date"
-            required="required"
-            id="date-of-birth"
-            onChange={(e) => setBirthDate(e.target.value)}
+
+          <DatePicker
+            className="date-of-birth"
+            onChange={setBirthDate}
+            value={birthDate}
           />
 
           <label htmlFor="start-date">Start Date</label>
-          <input
-            className="form-input"
-            type="date"
-            id="start-date"
-            required="required"
-            onChange={(e) => setStartDate(e.target.value)}
+          <DatePicker
+            className="start-date"
+            onChange={setStartDate}
+            value={startDate}
           />
 
           <fieldset className="address">
@@ -101,39 +102,37 @@ export default function Form() {
             />
             <br />
             <label htmlFor="state">State</label>
-            <select
-              name="state"
-              onChange={(e) => setState(e.target.value)}
-              id="state"
-            >
-              {states.map((state) => (
-                <option key={state.abbreviation} value={state.abbreviation} defaultValue="N/A">  
-                  {state.name}
-                </option>
-              ))}
-            </select>
+            <Dropdown
+              placeholder="Select an option"
+              className="state"
+              options={states.map((state) => state.name)}
+              value="Alabama"
+              onSelect={(value) => setState(value)}
+            />
 
             <label htmlFor="zip-code">Zip Code</label>
             <input
               id="zip-code"
               type="number"
               required="required"
-              onChange={(e) => setZipCode(e.target.value)}
+              onChange={(value) => setZipCode(value)}
             />
           </fieldset>
 
           <label htmlFor="department">Department</label>
-          <select
-            name="department"
-            onChange={(e) => setDepartment(e.target.value)}
-            id="department"
-          >
-            <option value="Sales">Sales</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Human Resources">Human Resources</option>
-            <option value="Legal">Legal</option>
-          </select>
+          <Dropdown
+            placeholder="Select an option"
+            className="department"
+            options={[
+              "Sales",
+              "Marketing",
+              "Engineering",
+              "Human Resources",
+              "Legal",
+            ]}
+            value="Select an option"
+            onSelect={(value) => setDepartment(value)} 
+          />
 
           <button className="button save">Save</button>
         </form>
@@ -150,4 +149,5 @@ export default function Form() {
       )}
     </div>
   );
+  
 }
