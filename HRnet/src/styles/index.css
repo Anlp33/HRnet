@@ -102,6 +102,13 @@ input,
   margin: 20px auto;
   cursor: pointer;
 }
+button.react-date-picker__clear-button.react-date-picker__button {
+  display: none;
+}
+
+button.react-date-picker__calendar-button.react-date-picker__button {
+  display: none;
+}
 
 .employeeslist {
   position: absolute;
