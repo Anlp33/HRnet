@@ -98,7 +98,7 @@ export default function Employees() {
       <h2>Current Employees</h2>
 
       <Styles>{data && <Table columns={columns} data={data} />}</Styles>
-      <Link to="/">Home</Link>
+      <Link to="/" className="home">Home</Link>
     </div>
   );
 }

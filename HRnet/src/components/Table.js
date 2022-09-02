@@ -1,6 +1,5 @@
 import React from "react";
-import { faArrowDown, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
   useTable,
   useSortBy,

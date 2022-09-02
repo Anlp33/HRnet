@@ -4,6 +4,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-width: 320px;
+  color: #333;
 }
 
 h1 {
@@ -20,10 +21,18 @@ a {
   color: black;
   font-weight: 600;
   text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.logo{
+  height: 120px;
 }
 .header {
   display: flex;
   justify-content: center;
+  justify-content: flex-start;
+  height: 110px;
+  margin-left: 10px;
 }
 .main {
   display: flex;
@@ -59,9 +68,12 @@ a {
   align-items: center;
   margin: 100px;
   background-color: floralwhite;
-  opacity: 90%;
+  opacity: 95%;
   border-radius: 10px;
   padding: 20px;
+}
+.modal{
+  background-color: white;
 }
 #first-name,
 #last-name,
@@ -113,6 +125,7 @@ button.react-date-picker__calendar-button.react-date-picker__button {
 .employeeslist {
   position: absolute;
   right: 0;
+  top: -50px;
 }
 
 .save {
@@ -135,4 +148,36 @@ button.react-date-picker__calendar-button.react-date-picker__button {
 }
 #city {
   margin-left: 10px;
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+  h2 {
+    margin-bottom: 30px;
+    font-size: 20px;
+}
+  th, tr, thead, tbody, td {
+    padding: 1px!important;
+    font-size: 9px!important;
+}
+.duLLuR {
+    padding: 0rem!important;
+}
+.table-header {
+  margin-top: 20px;
+}
+.table-header, input, .table-footer, button{
+  font-size: 12px!important;
+}
+select{
+  padding: 0;
+  font-size: 12px!important;
+}
+.home{margin-top: 20px;}
+.employeeList{
+  padding: 15px;
+}
+label{
+  font-size: 16px;
+}
 }
