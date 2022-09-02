@@ -21,7 +21,7 @@ This company uses an internal web application, called HRnet, which manages emplo
 
 Clone the repository:
 
-`https://github.com/Anlp33/Anne-laure-POIRE_14_30052022.git`
+`https://github.com/Anlp33/HRnet.git`
 
 Inside the front-end repository, install dependencies:
 
