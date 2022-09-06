@@ -49,7 +49,7 @@ a {
   position: relative;
   flex-direction: column;
   align-items: center;
-  background-image: url("../assets/employees.avif");
+  background-color: blanchedalmond;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100%;
