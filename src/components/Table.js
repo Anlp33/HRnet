@@ -27,7 +27,6 @@ function GlobalFilter({
 
   return (
     <span>
-      Search:{" "}
       <input
         value={value || ""}
         onChange={(e) => {
@@ -60,17 +59,10 @@ export default function Table({ columns, data }) {
     preGlobalFilteredRows,
     headerGroups,
     setGlobalFilter,
-    rows,
     setPageSize,
     prepareRow,
     page,
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    gotoPage,
-    nextPage,
-    previousPage,
-    state: { pageIndex, pageSize },
+    state: { pageSize },
   } = useTable(
     {
       columns,
@@ -138,39 +130,6 @@ export default function Table({ columns, data }) {
           })}
         </tbody>
       </table>
-
-      <div className="table-footer">
-        <div>
-          Showing {page.length === 0 ? "0" : Number(page[0].id) + 1} to{" "}
-          {page.length === 0 ? "0" : Number(page[page.length - 1].id) + 1} of{" "}
-          {rows.length} entries
-        </div>
-        <div className="pagination">
-          <span>
-            Page{" "}
-            <strong>
-              {pageIndex + 1} of {pageOptions.length}
-            </strong>{" "}
-          </span>
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            {"Previous"}
-          </button>{" "}
-          <span>
-            <input
-              type="number"
-              value={pageIndex + 1}
-              onChange={(e) => {
-                const page = e.target.value ? Number(e.target.value) - 1 : 0;
-                gotoPage(page);
-              }}
-              style={{ width: "30px" }}
-            />
-          </span>{" "}
-          <button onClick={() => nextPage()} disabled={!canNextPage}>
-            {"Next"}
-          </button>{" "}
-        </div>
-      </div>
     </>
   );
 }

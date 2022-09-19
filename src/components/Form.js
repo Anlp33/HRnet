@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { DataContext } from "../utils/context/dataContext";
 import { useState } from "react";
-import { states } from "../data/states";
 import DatePicker from "react-date-picker";
-import { Dropdown } from "react-dropdown-now";
-import "react-dropdown-now/style.css";
+import Header from "./Header";
 import Modal from "modal-component-anlp33/dist/Modal";
 
 /**
@@ -16,11 +14,9 @@ export default function Form() {
   const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
-  const [state, setState] = useState("Alabama");
   const [street, setCity] = useState("");
   const [city, setStreet] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [department, setDepartment] = useState("Sales");
   const [openModal, setOpenModal] = useState(false);
   const [formDisplay, setFormDisplay] = useState(true);
 
@@ -28,30 +24,28 @@ export default function Form() {
 
   const birthdateStr = birthDate.toDateString();
   const startDateStr = startDate.toDateString();
-  const departmentStr = department.toString();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setOpenModal(!openModal);
     setFormDisplay(!formDisplay);
 
+
     const employee = {
       firstName,
       lastName,
       birthdateStr,
       startDateStr,
-      state,
       street,
       city,
       zipCode,
-      departmentStr,
     };
     addData(employee);
-    console.log(employee);
   };
 
   return (
     <div className="form">
+      <Header />
       <h2>Create Employee</h2>
 
       {formDisplay ? (
@@ -77,6 +71,7 @@ export default function Form() {
             className="date-of-birth"
             onChange={setBirthDate}
             value={birthDate}
+            required={true}
           />
 
           <label htmlFor="start-date">Start Date</label>
@@ -84,6 +79,7 @@ export default function Form() {
             className="start-date"
             onChange={setStartDate}
             value={startDate}
+            required={true}
           />
 
           <fieldset className="address">
@@ -105,15 +101,7 @@ export default function Form() {
               onChange={(e) => setCity(e.target.value)}
             />
             <br />
-            <label htmlFor="state">State</label>
-            <Dropdown
-              placeholder="Select an option"
-              className="state"
-              options={states.map((state) => state.name)}
-              value="Alabama"
-              onSelect={(value) => setState(value)}
-            />
-
+           
             <label htmlFor="zip-code">Zip Code</label>
             <input
               id="zip-code"
@@ -122,21 +110,6 @@ export default function Form() {
               onChange={(e) => setZipCode(e.target.value)}
             />
           </fieldset>
-
-          <label htmlFor="department">Department</label>
-          <Dropdown
-            placeholder="Select an option"
-            className="department"
-            options={[
-              "Sales",
-              "Marketing",
-              "Engineering",
-              "Human Resources",
-              "Legal",
-            ]}
-            value="Sales"
-            onSelect={(value) => setDepartment(value)}
-          />
 
           <button className="button save">Save</button>
         </form>

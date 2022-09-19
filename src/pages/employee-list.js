@@ -64,10 +64,6 @@ export default function Employees() {
         accessor: "startDateStr",
       },
       {
-        Header: "Department",
-        accessor: "departmentStr",
-      },
-      {
         Header: "Date of Birth",
         accessor: "birthdateStr",
       },
@@ -78,10 +74,6 @@ export default function Employees() {
       {
         Header: "City",
         accessor: "city",
-      },
-      {
-        Header: "State",
-        accessor: "state",
       },
       {
         Header: "Zip Code",
@@ -95,10 +87,15 @@ export default function Employees() {
 
   return (
     <div id="employeeList" className="employeeList">
+      <div className="logo">
+        <Link to="/">HRnet</Link>
+      </div>
       <h2>Current Employees</h2>
 
       <Styles>{data && <Table columns={columns} data={data} />}</Styles>
-      <Link to="/" className="home">Home</Link>
+      <Link to="/" className="home">
+        Home
+      </Link>
     </div>
   );
 }

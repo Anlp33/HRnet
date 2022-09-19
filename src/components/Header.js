@@ -1,6 +1,6 @@
 import React from "react";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
+import { BsPeopleFill } from "react-icons/bs";
 
 /**
  * This component create a Header
@@ -9,8 +9,13 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <div className="header">
-      <Link to="/">
-        <img src={logo} alt="logo" className="logo"></img>
+      <div className="logo">
+        <Link to="/">HRnet</Link>
+      </div>
+      <Link to="/employees" className="employeesList">
+        <button type="button" className="button employeeslist">
+          View Current Employees <BsPeopleFill size={28} />
+        </button>
       </Link>
     </div>
   );
